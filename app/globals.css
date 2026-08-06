@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #211d16;
+  --paper: #f6f1e2;
+  --paper-dim: #efe8d4;
+
+  /* Amarelo vibrante e laranja de marca — inspirados no flyer do GEB */
+  --gold: #f0c93a;
+  --gold-deep: #c79a1d;
+  --vine: #dd6b24;
+  --vine-deep: #b4531a;
+  --clay: #8a4a3a;
+  --line: #ddd3b8;
+
+  /* Anoitecer — usado no Hero e no CTA final, os dois momentos de impacto */
+  --night: #17110c;
+  --night-soft: #251a10;
+  --line-dark: rgba(246, 241, 226, 0.14);
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-paper-dim: var(--paper-dim);
+  --color-gold: var(--gold);
+  --color-gold-deep: var(--gold-deep);
+  --color-vine: var(--vine);
+  --color-vine-deep: var(--vine-deep);
+  --color-clay: var(--clay);
+  --color-line: var(--line);
+  --color-night: var(--night);
+  --color-night-soft: var(--night-soft);
+  --color-line-dark: var(--line-dark);
+  --font-display: Georgia, "Iowan Old Style", "Palatino Linotype", "URW Palladio L", serif;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+.paper-texture {
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(33, 29, 22, 0.025) 0, transparent 45%),
+    radial-gradient(circle at 80% 60%, rgba(33, 29, 22, 0.02) 0, transparent 50%);
+}
+
+.underline-grow {
+  position: relative;
+}
+.underline-grow::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 1.5px;
+  width: 0;
+  background: var(--gold);
+  transition: width 0.25s ease;
+}
+.underline-grow:hover::after,
+.underline-grow[data-active="true"]::after {
+  width: 100%;
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold-deep);
+  outline-offset: 2px;
+}
